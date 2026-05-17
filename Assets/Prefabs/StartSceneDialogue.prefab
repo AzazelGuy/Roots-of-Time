@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2259619422275534129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2259619422275534131}
+  - component: {fileID: 2259619422275534130}
+  m_Layer: 0
+  m_Name: StartSceneDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2259619422275534131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259619422275534129}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -42.2, y: 45.7, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2259619422275534130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259619422275534129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a5dd0c4bcf584b9a62e61b4b369d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 0}
+  dialoguePages:
+  - text: '! ! ! ! !'
+    portrait: {fileID: 21300000, guid: 982ea7e3e90eaa64382e14d7f61db1b6, type: 3}
+    options: []
+    isStop: 0
+    ChangeSong: 0
+    music: {fileID: 0}
+  - text: "O Ch\xE3o treme abaixo, algo lhe persegue."
+    portrait: {fileID: 21300000, guid: 982ea7e3e90eaa64382e14d7f61db1b6, type: 3}
+    options: []
+    isStop: 1
+    ChangeSong: 1
+    music: {fileID: 8300000, guid: 75f2cf2827bb51a46a51c5ef1918185b, type: 3}

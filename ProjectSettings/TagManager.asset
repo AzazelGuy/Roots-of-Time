@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - WaterZone
+  - PlayerMain
+  - EnemyAttack
+  - KillZone
+  - Water
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - ParedesEPiso
+  - Unrender
+  - OusideWater
+  - Hide
+  - Enemies
+  - Player
+  - EnemyDamageZone
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background2
+    uniqueID: 670542909
+    locked: 0
+  - name: Background
+    uniqueID: 1167301419
+    locked: 0
+  - name: Ground
+    uniqueID: 3857304451
+    locked: 0
+  - name: Entities
+    uniqueID: 1317795095
+    locked: 0
+  - name: Foreground
+    uniqueID: 1513334641
+    locked: 0
+  - name: Unrender
+    uniqueID: 4113940223
+    locked: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615b2c5a1689d0d47a7f59ed130579ce, type: 3}
+  m_Name: Opabinia
+  m_EditorClassIdentifier: 
+  creatureName: Opabinia
+  portrait: {fileID: 0}
+  description: "Classifica\xE7\xE3o: Artr\xF3pode marinho.\nA Opabinia possu\xEDa
+    cinco olhos e uma longa tromba flex\xEDvel usada para capturar alimento no fundo
+    do mar. Apesar da apar\xEAncia estranha, era uma criatura relativamente inofensiva
+    que se alimentava de pequenos organismos e restos org\xE2nicos."
+  habitat: Oceano Cambriano
+  health: 3
+  damage: 1

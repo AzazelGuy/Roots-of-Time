@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615b2c5a1689d0d47a7f59ed130579ce, type: 3}
+  m_Name: Anomalocaris
+  m_EditorClassIdentifier: 
+  creatureName: Anomalocaris
+  portrait: {fileID: 21300000, guid: b9c79c51277647546901edfa6646bab3, type: 3}
+  description: "Classifica\xE7\xE3o: Predador marinho.\nO Anomalocaris foi um dos
+    maiores ca\xE7adores do Oceano Cambriano. Seu corpo alongado permitia nata\xE7\xE3o
+    r\xE1pida, enquanto seus ap\xEAndices frontais agarravam presas menores com facilidade.
+    Possu\xEDa uma boca circular cheia de placas afiadas capaz de esmagar carapa\xE7as."
+  habitat: Oceano Cambriano
+  health: 15
+  damage: 2
