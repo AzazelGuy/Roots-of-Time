@@ -9,6 +9,7 @@ TagManager:
   - EnemyAttack
   - KillZone
   - Water
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
