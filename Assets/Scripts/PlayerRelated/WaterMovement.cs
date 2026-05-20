@@ -17,7 +17,7 @@ public class WaterMovement : MonoBehaviour
     void OnEnable()
     {
         // Remove gravidade e zera velocidade ao entrar na água
-        rb.gravityScale = 0f;
+        rb.gravityScale = 4f;
         rb.velocity = Vector2.zero;
     }
 

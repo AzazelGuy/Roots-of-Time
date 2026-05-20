@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5269406609365164633}
   - component: {fileID: 7212149692342939383}
   m_Layer: 11
-  m_Name: Square
+  m_Name: PlayerAttack
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749716502688830828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.925, y: 0.175, z: 0}
+  m_LocalPosition: {x: 1.55, y: 0.175, z: 0}
   m_LocalScale: {x: 1, y: 0.65, z: 1}
   m_Children: []
   m_Father: {fileID: 3633146869648682345}
@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749716502688830828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -90,7 +90,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749716502688830828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -321,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3633146870200662777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.415, z: 0}
+  m_LocalPosition: {x: 0, y: -0.259, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3633146869648682345}
@@ -373,8 +373,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.100025676, y: 0.088905156}
-  m_Size: {x: 4.4228888, y: 1.177831}
+  m_Offset: {x: -0.07130265, y: 0.08890518}
+  m_Size: {x: 2.2593448, y: 0.7165966}
   m_Direction: 1
 --- !u!212 &3633146870651011760
 SpriteRenderer:
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_SortingLayerID: 1317795095
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f88c96f90089a1b40a49082eba5b6a3f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 409723536162f4d4281a3157ee37540d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -446,14 +446,16 @@ MonoBehaviour:
   m_SelfShadows: 1
   m_ApplyToSortingLayers: 000000003dacf7272b9b934583cbe9e517f58b4e71a7335a
   m_ShapePath:
-  - {x: -2.121136, y: 0.18735367, z: 0}
-  - {x: -1.4074014, y: -0.012500167, z: 0}
-  - {x: -0.06034738, y: -0.2823172, z: 0}
-  - {x: 0.36993313, y: -0.5992272, z: 0}
-  - {x: 2.369886, y: 0.10005155, z: 0}
-  - {x: 2.056867, y: 0.6351588, z: 0}
-  - {x: 0.025025278, y: 0.6968746, z: 0}
-  - {x: -1.7956892, y: 0.6439996, z: 0}
-  m_ShapePathHash: 175241675
+  - {x: -2.4527335, y: -0.12213707, z: 0}
+  - {x: -1.9711175, y: -0.333045, z: 0}
+  - {x: -0.03824067, y: -0.32653046, z: 0}
+  - {x: 0.7767978, y: -0.27159214, z: 0}
+  - {x: 1.3757803, y: -0.035510063, z: 0}
+  - {x: 1.8835421, y: 0.22163773, z: 0}
+  - {x: 1.3494577, y: 0.44725323, z: 0}
+  - {x: -0.09656072, y: 0.35422325, z: 0}
+  - {x: -1.4670153, y: 0.048952103, z: 0}
+  - {x: -1.8288493, y: 0.1687088, z: 0}
+  m_ShapePathHash: 156983625
   m_Mesh: {fileID: 0}
-  m_InstanceId: 20710
+  m_InstanceId: 35402

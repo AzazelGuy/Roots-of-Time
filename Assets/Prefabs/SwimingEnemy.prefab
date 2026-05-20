@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 6377437655968817166}
   - component: {fileID: 6377437655968817167}
   - component: {fileID: 429739991144925091}
-  - component: {fileID: 4758509368222040283}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -159,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 6377437655968817264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 19.953014}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 155960257960067654}
   m_Father: {fileID: 6377437656168500523}
@@ -257,28 +256,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 160822549
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47738
---- !u!95 &4758509368222040283
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6377437655968817264}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6891170a4eb3914fa9f8747cad135a0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_InstanceId: 59174
 --- !u!1 &6377437656168500525
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +268,6 @@ GameObject:
   - component: {fileID: 6377437656168500523}
   - component: {fileID: 6377437656168500522}
   - component: {fileID: 6377437656168500520}
-  - component: {fileID: 206256510786509275}
   m_Layer: 10
   m_Name: SwimingEnemy
   m_TagString: Untagged
@@ -372,24 +349,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!95 &206256510786509275
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6377437656168500525}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6eba58a2a67e56e4e9a46371978c86fa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

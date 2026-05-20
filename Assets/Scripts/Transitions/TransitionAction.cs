@@ -27,5 +27,7 @@ public class TransitionAction : MonoBehaviour
         else
             SceneManager.LoadScene(targetScene); // fallback
         }
+        GameManager.Instance.PlayerHealthMax = 16;
+        GameManager.Instance.PlayerHealth = GameManager.Instance.PlayerHealthMax;
     }
 }
