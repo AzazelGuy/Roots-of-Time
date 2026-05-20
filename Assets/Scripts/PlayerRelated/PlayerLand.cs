@@ -4,6 +4,7 @@ public class PlayerLand : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed = 8f;
+    private float _currentSpeed;
 
     [Header("Jump")]
     [SerializeField] float jumpForce = 12f;
@@ -20,6 +21,7 @@ public class PlayerLand : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] PhysicsMaterial2D noFriction;
     [SerializeField] PhysicsMaterial2D fullFriction;
+    private bool _isSlowed;
     [SerializeField] bool inWater;
 
     [Header("Wall Check")]
@@ -59,6 +61,7 @@ public class PlayerLand : MonoBehaviour
         rb  = GetComponent<Rigidbody2D>();
         col = GetComponentInChildren<CapsuleCollider2D>();
         spr = GetComponentInChildren<SpriteRenderer>();
+        _currentSpeed = moveSpeed;
         startDelayTimer = startDelayDuration;
     }
 
@@ -171,7 +174,7 @@ public class PlayerLand : MonoBehaviour
     void Move()
     {
         if (moveBlockTimer > 0) return;
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(xInput * _currentSpeed, rb.velocity.y);
     }
 
     void Jump()
@@ -205,7 +208,20 @@ public class PlayerLand : MonoBehaviour
         facingDir *= -1;
         spr.transform.localScale = new Vector3(facingDir, spr.transform.localScale.y, 1f);
     }
+    public void ApplySlow(float multiplier)
+    {
+        if (_isSlowed) return;          // evita empilhar o efeito
+        _isSlowed = true;
+        _currentSpeed = moveSpeed * multiplier;
+        Debug.Log("Lento");
+    }
 
+    public void RemoveSlow()
+    {
+        _isSlowed = false;
+        _currentSpeed = moveSpeed;
+        Debug.Log("Normal");
+    }
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
