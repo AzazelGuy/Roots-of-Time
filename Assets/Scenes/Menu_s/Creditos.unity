@@ -700,9 +700,8 @@ MonoBehaviour:
   m_text: "L\xEDder Principal\u2013 Thales Passinato\r\nProgramador- Levi Gabriel,
     Rodrigo Leonardo, Gabriel Gomes, Jo\xE3o Gabriel & Thales Passinato\r\nHist\xF3ria-
     Thales Passinato, Jo\xE3o Gabriel & Rodrigo Leonardo\r\nArte \u2013 Gabriela
-    Gomes, Jo\xE3o Gabriel & Lucas Abreu\r\nParticipantes Especiais\r\nM\xFAsicas
-    - Nyxenix\r\nProfessor \u2013 Vinicius\r\nTurma \u2013 3\xBA Jogos\r\nSesi Senai
-    Jardim Colorado\r\n"
+    Gomes, Jo\xE3o Gabriel & Lucas Abreu\r\nTurma \u2013 3 Jogos\r\nSesi Senai Jardim
+    Colorado\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee8f422b6d6fb014abeaafa0f794407f, type: 2}
   m_sharedMaterial: {fileID: 557107613345711176, guid: ee8f422b6d6fb014abeaafa0f794407f, type: 2}
@@ -729,7 +728,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
+  m_fontSize: 34.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

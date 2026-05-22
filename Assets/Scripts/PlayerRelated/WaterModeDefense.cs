@@ -18,11 +18,10 @@ public class WaterModeDefense : MonoBehaviour
     public GameObject ParryParticles;
     public float RegenTime = 0;
     float RegenTimer = 0;
-    public Sprite[] spriteteste;
-    [SerializeField] Color normalColor = Color.white;
-    [SerializeField] Color defenseColor = Color.cyan;
     [SerializeField] AudioClip Parry;
+    [SerializeField] AudioClip Hurt;
     private bool isInvincible = false;
+    public TrilobitaAnimatioController TrilobitaAnimatioController;
     private void Start()
     {
         spr = GetComponentInChildren<SpriteRenderer>();
@@ -36,13 +35,13 @@ public class WaterModeDefense : MonoBehaviour
         {
             inputTime = Time.time;
             lastInputTime = Time.time;
+            TrilobitaAnimatioController.Defend();
+
         }
 
         float timeSinceInput = Time.time - inputTime;
 
         bool isDefending = timeSinceInput <= DefenseTime;
-
-        spr.color = isDefending ? defenseColor : normalColor;
 
         HandleRegen();
     }
@@ -174,7 +173,7 @@ public class WaterModeDefense : MonoBehaviour
     {
         Debug.Log("Metade do Dano!");
         GameManager.Instance.PlayerHealth -= 1;
-
+        AudioController.Instance.PlaySFXRandomPitch(Hurt, -.8f, 1f);
         ApplyEnemyKnockback(enemy);
         RegenTimer = RegenTime;
     }
@@ -182,7 +181,7 @@ public class WaterModeDefense : MonoBehaviour
     {
         Debug.Log("Metade do Dano!");
         GameManager.Instance.PlayerHealth -= 1;
-
+        AudioController.Instance.PlaySFXRandomPitch(Hurt, -.8f, 1f);
         ApplyEnemyKnockbackBoss(enemy);
         RegenTimer = RegenTime;
     }
@@ -193,11 +192,13 @@ public class WaterModeDefense : MonoBehaviour
         Debug.Log("Dano Total!");
         GameManager.Instance.PlayerHealth -= 2;
         RegenTimer = RegenTime;
+        AudioController.Instance.PlaySFXRandomPitch(Hurt, -.8f, 1f);
     }
     private void HandleFullDamageBoss(AnomalocarisChase enemy)
     {
         ApplyEnemyKnockbackBoss(enemy);
         Debug.Log("Dano Total!");
+        AudioController.Instance.PlaySFXRandomPitch(Hurt);
         GameManager.Instance.PlayerHealth -= 2;
         RegenTimer = RegenTime;
     }

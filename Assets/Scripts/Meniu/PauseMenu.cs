@@ -72,7 +72,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        GameManager.Instance.LetsSave();
+        if (GameManager.Instance != null) GameManager.Instance.LetsSave();
     }
 
     public void LoadGame()

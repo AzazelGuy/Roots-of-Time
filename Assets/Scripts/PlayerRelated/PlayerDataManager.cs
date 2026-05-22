@@ -14,7 +14,7 @@ public class PlayerDataManager : MonoBehaviour
     public int health;
     public int healthmax;
     public string SceneName;
-
+    public bool IsLoadingData { get; private set; } = false;
     // Timeout em segundos — evita loop infinito se o player nunca aparecer
     private const float PLAYER_SEARCH_TIMEOUT = 5f;
 
@@ -73,7 +73,10 @@ public class PlayerDataManager : MonoBehaviour
         loadedData = JsonUtility.FromJson<PlayerData>(json);
 
         if (!string.IsNullOrEmpty(loadedData.SceneName))
+        {
+            IsLoadingData = true; // ✅ avisa antes de trocar de cena
             SceneManager.LoadScene(loadedData.SceneName);
+        }
         else
             Debug.LogError("SaveData sem SceneName!");
     }
@@ -91,49 +94,76 @@ public class PlayerDataManager : MonoBehaviour
 
     private IEnumerator ApplyLoadedData()
     {
-        // CORREÇÃO PRINCIPAL:
-        // WaitForEndOfFrame não é confiável em builds — a Unity pode não ter
-        // terminado de instanciar e inicializar todos os objetos da cena ainda.
-        //
-        // A solução correta é esperar ativamente até o player existir,
-        // com um timeout para não travar o jogo se algo der errado.
-
         float elapsed = 0f;
         GameObject player = null;
+
+        // Espera pelo menos 1 frame antes de começar a buscar
+        yield return null;
 
         while (player == null)
         {
             player = GameObject.FindGameObjectWithTag("PlayerMain");
-
             if (player != null) break;
 
-            elapsed += Time.unscaledDeltaTime;
+            elapsed += Time.deltaTime; // ✅ deltaTime normal é mais seguro aqui
             if (elapsed >= PLAYER_SEARCH_TIMEOUT)
             {
-                Debug.LogError($"ApplyLoadedData: PlayerMain não apareceu em {PLAYER_SEARCH_TIMEOUT}s. Abortando.");
+                Debug.LogError("PlayerMain não apareceu. Abortando load.");
                 loadedData = null;
                 yield break;
             }
 
-            // Espera um frame e tenta de novo
             yield return null;
         }
 
-        // Garante que o player já rodou pelo menos um frame completo
-        // antes de mover (evita conflito com scripts de spawn/posicionamento)
+        // ✅ Aguarda o final do frame COM o player já encontrado
         yield return new WaitForEndOfFrame();
 
+        // ✅ DEPOIS
+        Vector3 targetPos = new Vector3(
+            loadedData.Position[0],
+            loadedData.Position[1],
+            loadedData.Position[2]
+        );
+
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+        // Desativa RB
+        if (rb != null) rb.simulated = false;
+
+        // Move o root
         player.transform.position = new Vector3(
             loadedData.Position[0],
             loadedData.Position[1],
             loadedData.Position[2]
         );
 
+        // ✅ FORÇA propagação para todos os filhos imediatamente
+        player.transform.hasChanged = false;
+        foreach (Transform child in player.GetComponentsInChildren<Transform>())
+        {
+            child.hasChanged = false;
+        }
+
+        // ✅ Isso força o Unity a recalcular a matriz de todos os filhos agora
+        player.SetActive(false);
+        player.SetActive(true);  // reativa — isso reseta a hierarquia inteira
+
+        // Reativa RB após o SetActive
+        rb = player.GetComponent<Rigidbody2D>(); // busca de novo pois SetActive resetou
+        if (rb != null)
+        {
+            rb.velocity  = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.simulated       = true;
+        }
+
         GameManager.Instance.PlayerHealth    = loadedData.health;
         GameManager.Instance.PlayerHealthMax = loadedData.healthmax;
 
-        Debug.Log($"Dados aplicados: HP {loadedData.health}/{loadedData.healthmax}, pos {player.transform.position}");
-
+        Debug.Log($"Load aplicado: HP {loadedData.health}/{loadedData.healthmax}");
         loadedData = null;
+        IsLoadingData = false; // ✅ libera spawns normais de novo
     }
 }
+

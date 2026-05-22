@@ -29,6 +29,8 @@ public class AudioController : MonoBehaviour
     private bool musicMuted = false;
     private bool sfxMuted = false;
     private Coroutine fadeCoroutine;
+    private AudioClip _savedClip;
+    private bool _savedWasPlaying;
 
     // ─── Propriedades públicas ────────────────────────────────────
     public float MusicVolume
@@ -51,6 +53,8 @@ public class AudioController : MonoBehaviour
         }
     }
 
+    public AudioClip CrrentMusicClip => musicSource.clip;
+    public bool IsMusicPlaying => musicSource.isPlaying;
     // ─────────────────────────────────────────────────────────────
     #region Unity Lifecycle
 
@@ -102,6 +106,34 @@ public class AudioController : MonoBehaviour
     public void ResumeMusic() => musicSource.UnPause();
     public void StopMusic() => musicSource.Stop();
 
+    // Salva a música atual e toca uma nova
+    public void SaveAndPlayMusic(AudioClip clip, float fadeDuration = 1f, bool useFade = true)
+    {
+        _savedClip = musicSource.clip;
+        _savedWasPlaying = musicSource.isPlaying;
+
+        if (useFade)
+            PlayMusicWithFade(clip, fadeDuration);
+        else
+            PlayMusic(clip);
+    }
+
+    public void RestoreSavedMusic(float fadeDuration = 1f, bool useFade = true)
+    {
+        if (!_savedWasPlaying || _savedClip == null)
+        {
+            StopMusic();
+            _savedClip = null;
+            return;
+        }
+
+        if (useFade)
+            PlayMusicWithFade(_savedClip, fadeDuration);
+        else
+            PlayMusic(_savedClip);
+
+        _savedClip = null;
+    }
     #endregion
 
     // ─────────────────────────────────────────────────────────────

@@ -42,7 +42,7 @@ public class AnomalocarisChase : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Vector2 currentDirection;
-
+    public Animator animator;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -69,8 +69,10 @@ public class AnomalocarisChase : MonoBehaviour
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
-            if (dashTimer <= 0f)
+            if (dashTimer <= 0f){
                 isDashing = false;
+                animator.SetTrigger("Retornar");
+            }
             return; // não recalcula direção durante o dash
         }
 
@@ -139,6 +141,7 @@ public class AnomalocarisChase : MonoBehaviour
             dashCooldownTimer = dashCooldown;
             currentDirection = toPlayer; // trava a direção do dash
             AudioController.Instance.PlaySFX(DashSound);
+            animator.SetTrigger("Atacar");
         }
     }
 

@@ -2,11 +2,27 @@ using UnityEngine;
 
 public class HideZone : MonoBehaviour
 {
+    bool playerInside = false;
+
+    private void Update()
+    {
+        if (playerInside)
+        {
+            UIPlayer.Instance.Vignnet.color = Color.Lerp(UIPlayer.Instance.Vignnet.color, new Color(1, 1, 1, 1), 0.1f);
+
+        }
+        else
+        {
+
+            UIPlayer.Instance.Vignnet.color = Color.Lerp(UIPlayer.Instance.Vignnet.color, new Color(1, 1, 1, 0), 0.1f);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerMain"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = true;
+            playerInside = true;
         }
     }
 
@@ -15,7 +31,7 @@ public class HideZone : MonoBehaviour
         if (other.CompareTag("PlayerMain"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = true;
-            UIPlayer.Instance.Vignnet.color = Color.Lerp(UIPlayer.Instance.Vignnet.color, new Color(1, 1, 1, 1), 0.1f);
+            
         }
     }
 
@@ -24,7 +40,7 @@ public class HideZone : MonoBehaviour
         if (other.CompareTag("PlayerMain"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = false;
-            UIPlayer.Instance.Vignnet.color = Color.Lerp(UIPlayer.Instance.Vignnet.color, new Color(1, 1, 1, 0), 0.1f);
+            playerInside = false;
         }
     }
 }

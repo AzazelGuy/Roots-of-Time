@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     float WaitStartTimer = 0f;
     [SerializeField] float WaitStartTime = .5f;
+    public TrilobitaAnimatioController TrilobitaAnimatioController;
     void Awake()
     {
         // pega referências dos componentes necessários
@@ -203,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
         );
 
         isGrounded = hit;
+        TrilobitaAnimatioController.Grounded = isGrounded;
     }
 
     void CheckWall()
@@ -234,12 +236,16 @@ public class PlayerMovement : MonoBehaviour
 
         // aplica velocidade horizontal
         rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        TrilobitaAnimatioController.xSpeed = rb.velocity.x;
+        TrilobitaAnimatioController.ySpeed = rb.velocity.y;
     }
 
     void Jump()
     {
         groundDisableTimer = groundDisableTime;
         jumpBufferTimer = 0;
+
+        TrilobitaAnimatioController.Jump();
         // desativa Coyote Time
         CayoteTime = -10;
 

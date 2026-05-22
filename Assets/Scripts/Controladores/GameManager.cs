@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     // No editor dificilmente aparece, mas em builds o Update pode rodar
     // mais de um frame com HP <= 0 antes da cena trocar.
     private bool isGameOver = false;
+    private PlayerDataManager _dataManager;
 
     void Awake()
     {
@@ -26,11 +27,19 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            _dataManager = GetComponent<PlayerDataManager>(); // ✅ cacheia uma vez
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
+    }
+
+    public void LetsSave() => _dataManager?.SaveGame();
+    public void LetsLoad() => _dataManager?.LoadGame();
+    public void LoadDefaults()
+    {
+        _dataManager?.ClearData();
+        isGameOver      = false;
+        PlayerHealth    = 4;
+        PlayerHealthMax = 4;
     }
 
     private void Update()
@@ -66,25 +75,6 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         PlayerHealth = 1; // ou LoadDefaults()
     }
-
-    public void LetsSave()
-    {
-        GetComponent<PlayerDataManager>().SaveGame();
-    }
-
-    public void LetsLoad()
-    {
-        GetComponent<PlayerDataManager>().LoadGame();
-    }
-
-    public void LoadDefaults()
-    {
-        GetComponent<PlayerDataManager>().ClearData();
-        isGameOver   = false;
-        PlayerHealth    = 4;
-        PlayerHealthMax = 4;
-    }
-
     public void ShowdevMenu()
     {
         // implementar depois

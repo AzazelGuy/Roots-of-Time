@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anomalocaris
   m_EditorClassIdentifier: 
   creatureName: Anomalocaris
-  portrait: {fileID: 21300000, guid: b9c79c51277647546901edfa6646bab3, type: 3}
+  portrait: {fileID: 21300000, guid: e84dd851fadf59948ae0b03248e23cdf, type: 3}
   description: "Classifica\xE7\xE3o: Predador marinho.\nO Anomalocaris foi um dos
     maiores ca\xE7adores do Oceano Cambriano. Seu corpo alongado permitia nata\xE7\xE3o
     r\xE1pida, enquanto seus ap\xEAndices frontais agarravam presas menores com facilidade.

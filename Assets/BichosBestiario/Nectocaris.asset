@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nectocaris
   m_EditorClassIdentifier: 
   creatureName: Nectocaris
-  portrait: {fileID: 21300000, guid: 8bdc21ec64562434a834ba373499e7b8, type: 3}
+  portrait: {fileID: 21300000, guid: 61257049dc13c194285400ce7345d4f0, type: 3}
   description: "Criatura aqu\xE1tica tranquila que desliza pela \xE1gua com movimentos
     suaves. N\xE3o apresenta comportamento agressivo e prefere evitar qualquer forma
     de confronto, fugindo rapidamente ao detectar perigo."

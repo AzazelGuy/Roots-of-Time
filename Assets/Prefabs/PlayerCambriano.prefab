@@ -143,6 +143,8 @@ GameObject:
   - component: {fileID: 3633146869648682340}
   - component: {fileID: 966999303}
   - component: {fileID: 6853172669906181229}
+  - component: {fileID: 2312271645532799996}
+  - component: {fileID: 4346091711498038474}
   m_Layer: 11
   m_Name: PlayerCambriano
   m_TagString: PlayerMain
@@ -205,6 +207,7 @@ MonoBehaviour:
   moving: 1
   snapBlockTime: 0.3
   WaitStartTime: 0.5
+  TrilobitaAnimatioController: {fileID: 2312271645532799996}
 --- !u!50 &3633146869648682340
 Rigidbody2D:
   serializedVersion: 4
@@ -245,12 +248,9 @@ MonoBehaviour:
   invenciTimer: 0
   ParryParticles: {fileID: 4642208306826155871, guid: 0f1870353d3edfb4e83286f99286a599, type: 3}
   RegenTime: 10
-  spriteteste:
-  - {fileID: 21300000, guid: 1f2dc71cbfec37e4097b9427a987d7e1, type: 3}
-  - {fileID: 21300000, guid: 756011da8478a044a86ac8e35822fe5f, type: 3}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  defenseColor: {r: 0, g: 1, b: 1, a: 1}
   Parry: {fileID: 8300000, guid: 19d55766df685e7498a24dde2a1e9b97, type: 3}
+  Hurt: {fileID: 8300000, guid: 8877ba01d8351544e90c63ab8583bbcb, type: 3}
+  TrilobitaAnimatioController: {fileID: 2312271645532799996}
 --- !u!114 &6853172669906181229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +263,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1243a0972c8b83a48a0350ef60cab56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2312271645532799996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633146869648682341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2708c3b2a939ec419f13aa2ac750353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4346091711498038474}
+  xSpeed: 0
+  ySpeed: 0
+  Grounded: 0
+--- !u!95 &4346091711498038474
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633146869648682341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e9d2474c977de841b7396fae5cf3ef6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3633146870200662777
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +341,6 @@ GameObject:
   - component: {fileID: 3633146870651011761}
   - component: {fileID: 3633146870651011763}
   - component: {fileID: 3633146870651011760}
-  - component: {fileID: 727585912543150048}
   m_Layer: 11
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -384,7 +420,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f2dc71cbfec37e4097b9427a987d7e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -393,32 +429,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &727585912543150048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3633146870651011758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 1
-  m_ApplyToSortingLayers: 000000003dacf7272b9b934583cbe9e517f58b4e71a7335a
-  m_ShapePath:
-  - {x: -0.9454825, y: -0.49314642, z: 0}
-  - {x: 1.0071647, y: -0.5068536, z: 0}
-  - {x: 0.9386289, y: -0.08255386, z: 0}
-  - {x: -0.96604323, y: -0.014018059, z: 0}
-  m_ShapePathHash: -949237721
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 42508
 --- !u!1 &3633146870867072509
 GameObject:
   m_ObjectHideFlags: 0
