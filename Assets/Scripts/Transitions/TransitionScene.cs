@@ -1,7 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class TransitionScene : MonoBehaviour
 {
@@ -14,13 +14,12 @@ public class TransitionScene : MonoBehaviour
     public float speed = 1500f;
     public float fadeSpeed = 2f;
 
+    [Header("Cenas que NÃO salvam ao carregar")]
+    public string[] noSaveScenes = { "MainMenu", "GameOver", "Credits" };
+
     public bool active = false;
 
-    public enum TransitionDirection
-    {
-        LeftToRight,
-        RightToLeft
-    }
+    public enum TransitionDirection { LeftToRight, RightToLeft }
 
     private void Awake()
     {
@@ -28,7 +27,6 @@ public class TransitionScene : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
         }
         else
         {
@@ -45,15 +43,20 @@ public class TransitionScene : MonoBehaviour
         }
     }
 
+    private bool ShouldSave(string sceneName)
+    {
+        foreach (var s in noSaveScenes)
+            if (s == sceneName) return false;
+
+        return true;
+    }
+
     private IEnumerator TransitionCoroutine(string sceneName, TransitionDirection direction)
     {
         float imageWidth = transitionImage.rect.width;
-
-        Vector3 start;
         Vector3 cover = Vector3.zero;
-        Vector3 exit;
+        Vector3 start, exit;
 
-        // 🎯 Define direção
         if (direction == TransitionDirection.LeftToRight)
         {
             start = new Vector3(-imageWidth, 0, 0);
@@ -67,55 +70,43 @@ public class TransitionScene : MonoBehaviour
 
         transitionImage.anchoredPosition = start;
 
-        float duration = 0.5f; // tempo da animação
+        float duration = 0.5f;
         float elapsed = 0f;
 
+        // Entrada
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
-            float t = elapsed / duration; // agora vai de 0 → 1 garantido
-            float eased = EaseInOut(t);
-
-            transitionImage.anchoredPosition = Vector3.Lerp(start, cover, eased);
-
+            transitionImage.anchoredPosition = Vector3.Lerp(start, cover, EaseInOut(elapsed / duration));
             yield return null;
         }
-
-        // garante posição final exata
         transitionImage.anchoredPosition = cover;
 
-        // 2️ CARREGA CENA
+        // Carrega cena
         yield return SceneManager.LoadSceneAsync(sceneName);
-        if (!(SceneManager.GetActiveScene().name == "Menu" || 
-            SceneManager.GetActiveScene().name == "Creditos" ||
-            SceneManager.GetActiveScene().name == "GameOver" ||
-            SceneManager.GetActiveScene().name == "FimPorEnquanto"))
+
+        if (ShouldSave(sceneName))
         {
-            if (GameManager.Instance != null) GameManager.Instance.LetsSave();
+            // Espera PlayerSpawn terminar (tem 1 yield interno)
+            yield return null;
+            yield return null;
+
+            GameManager.Instance?.LetsSave();
         }
+
         elapsed = 0f;
 
+        // Saída
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
-            float t = elapsed / duration;
-            float eased = EaseInOut(t);
-
-            transitionImage.anchoredPosition = Vector3.Lerp(cover, exit, eased);
-
+            transitionImage.anchoredPosition = Vector3.Lerp(cover, exit, EaseInOut(elapsed / duration));
             yield return null;
         }
-
         transitionImage.anchoredPosition = exit;
 
         active = false;
     }
 
-    // 🧠 easing bonitinho (smooth)
-    private float EaseInOut(float t)
-    {
-        return t * t * (3f - 2f * t); // SmoothStep
-    }
+    private float EaseInOut(float t) => t * t * (3f - 2f * t);
 }

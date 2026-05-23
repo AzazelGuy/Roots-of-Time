@@ -19,7 +19,7 @@ public class HideZone : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain"))
+        if (other.CompareTag("PlayerInteract"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = true;
             playerInside = true;
@@ -28,7 +28,7 @@ public class HideZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain"))
+        if (other.CompareTag("PlayerInteract"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = true;
             
@@ -37,7 +37,7 @@ public class HideZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain"))
+        if (other.CompareTag("PlayerInteract"))
         {
             other.GetComponentInParent<PlayerMovement>().isHidden = false;
             playerInside = false;

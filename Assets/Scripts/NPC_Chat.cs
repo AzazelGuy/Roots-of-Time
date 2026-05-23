@@ -25,11 +25,11 @@ public class NPC_Chat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain")) playerNearby = true; //PLayer tá no colisor
+        if (other.CompareTag("PlayerInteract")) playerNearby = true; //PLayer tá no colisor
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain")) playerNearby = false; //Player não tá no colisor :(
+        if (other.CompareTag("PlayerInteract")) playerNearby = false; //Player não tá no colisor :(
     }
 }

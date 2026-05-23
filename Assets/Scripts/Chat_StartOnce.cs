@@ -15,7 +15,7 @@ public class Chat_StartOnce : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain")) {
+        if (other.CompareTag("PlayerInteract")) {
             dialogueController.StartDialogue(dialoguePages);
             Destroy(gameObject);
         }

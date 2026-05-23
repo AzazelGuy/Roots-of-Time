@@ -16,26 +16,31 @@ public class DoorTransition : MonoBehaviour
     public TypeofMove typeofMove;
     void Update()
     {
-        if (playerInside && TransitionScene.Instance.active == false)
+        if (!playerInside) return;
+
+        //  Checa null ANTES de acessar .active
+        if (TransitionScene.Instance != null)
         {
+            if (TransitionScene.Instance.active) return; // já tem transição rolando
+
             GameManager.Instance.nextSpawnID = targetSpawnID;
 
-            // Chama a transição
-            if (TransitionScene.Instance != null) { 
             if (typeofMove == TypeofMove.LefttoRight)
                 TransitionScene.Instance.LoadSceneWithTransition(targetScene, TransitionScene.TransitionDirection.LeftToRight);
-            if (typeofMove == TypeofMove.RighttoLeft)
+            else
                 TransitionScene.Instance.LoadSceneWithTransition(targetScene, TransitionScene.TransitionDirection.RightToLeft);
         }
         else
-            SceneManager.LoadScene(targetScene); // fallback
+        {
+            // Fallback se o TransitionScene não existir
+            GameManager.Instance.nextSpawnID = targetSpawnID;
+            SceneManager.LoadScene(targetScene);
         }
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMain")) 
+        if (other.CompareTag("PlayerInteract")) 
         {
             playerInside = true;
            WaterModeDefense invencible = other.GetComponentInParent<WaterModeDefense>();

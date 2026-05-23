@@ -2412,7 +2412,7 @@ MonoBehaviour:
   dialogueGroup: {fileID: 1677396804}
   dialogueText: {fileID: 885228142}
   portraitImage: {fileID: 1001475545}
-  typingSpeed: 0.5
+  typingSpeed: 0.02
   blip: {fileID: 0}
   choicesPanel: {fileID: 1668956240}
   choicePositions:

@@ -97,29 +97,27 @@ public class PlayerDataManager : MonoBehaviour
         float elapsed = 0f;
         GameObject player = null;
 
-        // Espera pelo menos 1 frame antes de começar a buscar
-        yield return null;
+        yield return null; // espera 1 frame pós-sceneLoaded
 
         while (player == null)
         {
             player = GameObject.FindGameObjectWithTag("PlayerMain");
-            if (player != null) break;
 
-            elapsed += Time.deltaTime; // ✅ deltaTime normal é mais seguro aqui
+            elapsed += Time.deltaTime;
             if (elapsed >= PLAYER_SEARCH_TIMEOUT)
             {
                 Debug.LogError("PlayerMain não apareceu. Abortando load.");
                 loadedData = null;
+                IsLoadingData = false;
                 yield break;
             }
 
-            yield return null;
+            if (player == null) yield return null;
         }
 
-        // ✅ Aguarda o final do frame COM o player já encontrado
+        // Garante que o player já rodou Start() e Awake() completos
         yield return new WaitForEndOfFrame();
 
-        // ✅ DEPOIS
         Vector3 targetPos = new Vector3(
             loadedData.Position[0],
             loadedData.Position[1],
@@ -128,42 +126,23 @@ public class PlayerDataManager : MonoBehaviour
 
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
 
-        // Desativa RB
-        if (rb != null) rb.simulated = false;
+        Debug.Log($"ANTES de aplicar | player pos: {player.transform.position}");
+        rb.position = targetPos;
+        player.transform.position = targetPos;
+        yield return null;
+        Debug.Log($"DEPOIS de 1 frame | player pos: {player.transform.position}");
+        yield return null;
+        Debug.Log($"DEPOIS de 2 frames | player pos: {player.transform.position}");
 
-        // Move o root
-        player.transform.position = new Vector3(
-            loadedData.Position[0],
-            loadedData.Position[1],
-            loadedData.Position[2]
-        );
+        // NÃO use SetActive(false/true) — causa o colisor fantasma
 
-        // ✅ FORÇA propagação para todos os filhos imediatamente
-        player.transform.hasChanged = false;
-        foreach (Transform child in player.GetComponentsInChildren<Transform>())
-        {
-            child.hasChanged = false;
-        }
-
-        // ✅ Isso força o Unity a recalcular a matriz de todos os filhos agora
-        player.SetActive(false);
-        player.SetActive(true);  // reativa — isso reseta a hierarquia inteira
-
-        // Reativa RB após o SetActive
-        rb = player.GetComponent<Rigidbody2D>(); // busca de novo pois SetActive resetou
-        if (rb != null)
-        {
-            rb.velocity  = Vector2.zero;
-            rb.angularVelocity = 0f;
-            rb.simulated       = true;
-        }
-
-        GameManager.Instance.PlayerHealth    = loadedData.health;
+        GameManager.Instance.PlayerHealth = loadedData.health;
         GameManager.Instance.PlayerHealthMax = loadedData.healthmax;
 
-        Debug.Log($"Load aplicado: HP {loadedData.health}/{loadedData.healthmax}");
+        Debug.Log($"Load aplicado: HP {loadedData.health}/{loadedData.healthmax} | Pos: {targetPos}");
+
         loadedData = null;
-        IsLoadingData = false; // ✅ libera spawns normais de novo
+        IsLoadingData = false;
     }
 }
 

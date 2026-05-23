@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         if (hit)
         {
             // debug para mostrar qual objeto foi atingido
-            Debug.Log("Hit: " + hit.collider.name);
+            //Debug.Log("Hit: " + hit.collider.name);
             onWall = true;
         }
         else

@@ -116,7 +116,11 @@ MonoBehaviour:
   transitionImage: {fileID: 3403266842232591342}
   speed: 7000
   fadeSpeed: 2
-  active: 0
+  noSaveScenes:
+  - MainMenu
+  - GameOver
+  - Credits
+  active: 1
 --- !u!1 &3403266842232591343
 GameObject:
   m_ObjectHideFlags: 0

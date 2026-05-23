@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7296894856379908011}
   m_Layer: 11
   m_Name: InteractZone
-  m_TagString: PlayerMain
+  m_TagString: PlayerInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,6 +272,7 @@ MonoBehaviour:
   moving: 1
   snapBlockTime: 0.1
   WaitStartTime: 0.5
+  TrilobitaAnimatioController: {fileID: 0}
 --- !u!1 &3633146870200662777
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,4 +428,4 @@ MonoBehaviour:
   - {x: -0.64, y: 0.64, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70028
+  m_InstanceId: 71010

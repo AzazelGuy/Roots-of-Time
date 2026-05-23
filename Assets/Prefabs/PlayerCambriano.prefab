@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 7296894856379908011}
   m_Layer: 11
   m_Name: InteractZone
-  m_TagString: PlayerMain
+  m_TagString: PlayerInteract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

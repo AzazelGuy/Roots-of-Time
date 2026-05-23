@@ -10,6 +10,7 @@ TagManager:
   - KillZone
   - Water
   - PlayerAttack
+  - PlayerInteract
   layers:
   - Default
   - TransparentFX
