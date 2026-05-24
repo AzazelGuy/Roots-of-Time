@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hallucigenia
   m_EditorClassIdentifier: 
   creatureName: Hallucigenia
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 96f7ef2bc3dc2804e90529cbb43b43d4, type: 3}
   description: "Classifica\xE7\xE3o: Vermiforme espinhoso.\nA Hallucigenia era uma
     pequena criatura coberta por espinhos r\xEDgidos usados para defesa contra predadores.
     Seus movimentos lentos a tornavam vulner\xE1vel, mas sua apar\xEAncia intimidadora

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Opabinia
   m_EditorClassIdentifier: 
   creatureName: Opabinia
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: c2b8bbc98db7ed5478490843512a85e4, type: 3}
   description: "Classifica\xE7\xE3o: Artr\xF3pode marinho.\nA Opabinia possu\xEDa
     cinco olhos e uma longa tromba flex\xEDvel usada para capturar alimento no fundo
     do mar. Apesar da apar\xEAncia estranha, era uma criatura relativamente inofensiva
