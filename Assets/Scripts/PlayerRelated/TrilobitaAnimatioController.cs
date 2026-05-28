@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TrilobitaAnimatioController : MonoBehaviour
 {
-    [Header ("Controlador de Animação")]
+    [Header ("Controlador de AnimaÃ§Ã£o")]
     public Animator animator;
 
-    //Escondido no inspetor, variaveis para controlar animação
+    //Escondido no inspetor, variaveis para controlar animacao
     [HideInInspector] public float xSpeed;
     [HideInInspector] public float ySpeed;
     [HideInInspector] private bool isDefendind;
