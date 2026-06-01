@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BestiaryUI : MonoBehaviour
 {
     [Header("Criaturas")]
-    public List<CreatureData> allCreatures;
+    public List<CreatureDataBestiary> allCreatures;
 
     [Header("Grid")]
     public Transform gridParent;
@@ -36,7 +36,7 @@ public class BestiaryUI : MonoBehaviour
         }
     }
 
-    void ShowDetail(CreatureData c)
+    void ShowDetail(CreatureDataBestiary c)
     {
         detailPanel.SetActive(true);
         detailPortrait.sprite  = c.portrait;

@@ -9,10 +9,10 @@ public class CreatureCardUI : MonoBehaviour
     public Image portrait;
     public TMP_Text nameText;
 
-    private CreatureData data;
-    private Action<CreatureData> onClick;
+    private CreatureDataBestiary data;
+    private Action<CreatureDataBestiary> onClick;
 
-    public void Setup(CreatureData creature, Action<CreatureData> callback)
+    public void Setup(CreatureDataBestiary creature, Action<CreatureDataBestiary> callback)
     {
         data      = creature;
         onClick   = callback;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewCreature", menuName = "Bestiary/Creature")]
-public class CreatureData : ScriptableObject
+public class CreatureDataBestiary : ScriptableObject
 {
     public string creatureName;
     public Sprite portrait;

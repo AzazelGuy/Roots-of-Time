@@ -11,6 +11,14 @@ TagManager:
   - Water
   - PlayerAttack
   - PlayerInteract
+  - Prey
+  - Land
+  - Predator
+  - LargePredator
+  - SmallPrey
+  - Shark
+  - Cladoselache
+  - Stethacanthus
   layers:
   - Default
   - TransparentFX
