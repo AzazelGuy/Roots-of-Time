@@ -34,6 +34,7 @@ public class Gorgonichthysai : CreatureAI
         if (prey == null)
             prey = FindNearest(generalTags, EffectiveDetectionRange);
 
+
         if (prey == null && playerTransform != null && Vector2.Distance(rb.position, playerTransform.position) <= EffectiveDetectionRange)
         {
             prey = playerTransform;

@@ -14,7 +14,9 @@ public class TiktaalikMoisture : MonoBehaviour
     [SerializeField] private CreatureData data;
 
     [Header("UI")]
-    [SerializeField] private Slider moistureBar;
+    [SerializeField] private SpriteRenderer fill;
+    [SerializeField] private float maxWidth = 2f;
+    [SerializeField] private GameObject groupBar;
 
     // ─── Estado interno ───────────────────────────────────────────────────────
 
@@ -39,7 +41,7 @@ public class TiktaalikMoisture : MonoBehaviour
     private void Update()
     {
         TickDesiccation();
-        UpdateUI();
+        SetMoisture();
     }
 
     // ─── Dessecação ───────────────────────────────────────────────────────────
@@ -55,16 +57,19 @@ public class TiktaalikMoisture : MonoBehaviour
             moisture = Mathf.Min(
                 moisture + data.moistureDrainRate * Time.deltaTime,
                 data.moistureMax);
+
+            groupBar.SetActive(false);
             return;
         }
 
+        groupBar.SetActive(true);
         moisture -= data.moistureDrainRate * desiccationMultiplier * Time.deltaTime;
         moisture  = Mathf.Max(moisture, 0f);
 
         if (moisture <= 0f && GameManager.Instance != null)
         {
-            GameManager.Instance.PlayerHealth -=
-                Mathf.RoundToInt(data.desiccationDamageRate * Time.deltaTime);
+            GameManager.Instance.PlayerHealth -= 5;
+            moisture = data.moistureMax;
         }
     }
 
@@ -72,11 +77,12 @@ public class TiktaalikMoisture : MonoBehaviour
     public void SetDesiccationMultiplier(float multiplier)
         => desiccationMultiplier = Mathf.Max(0f, multiplier);
 
-    // ─── UI ───────────────────────────────────────────────────────────────────
+    
 
-    private void UpdateUI()
+    public void SetMoisture()
     {
-        if (moistureBar != null && data != null)
-            moistureBar.value = MoisturePercent;
+        Vector2 size = fill.size;
+        size.x = maxWidth * MoisturePercent;
+        fill.size = size;
     }
 }
