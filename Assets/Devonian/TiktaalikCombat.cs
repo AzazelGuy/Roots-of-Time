@@ -7,7 +7,6 @@ public class TiktaalikCombat : MonoBehaviour
     private Animator anim;
     private float attackCooldownTimer;
     [SerializeField ]private float attackCooldownTime;
-    public float attackDMG = 5f;
     private bool isAttacking;
     private void Awake()
     {

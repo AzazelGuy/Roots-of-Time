@@ -7,10 +7,11 @@ public class DamageTaker : MonoBehaviour
     [Header("Invencibilidade")]
     [SerializeField] float invenciTime = 1.5f;
 
-    [Header("Regeneração")]
+    public Transform spriteTransform;
+    [Header("Regeneraï¿½ï¿½o")]
     public float RegenTime = 0f;
 
-    [Header("Áudio")]
+    [Header("ï¿½udio")]
     [SerializeField] AudioClip Hurt;
 
     [HideInInspector] public float invenciTimer = 0f;
@@ -35,7 +36,13 @@ public class DamageTaker : MonoBehaviour
         {
             invenciTimer = 0f;
             isInvincible = false;
+            spriteTransform.gameObject.SetActive(true);
             return;
+        }
+        else
+        {
+            spriteTransform.gameObject.SetActive(
+            Mathf.FloorToInt(Time.time * 20) % 2 == 0);
         }
 
         invenciTimer -= Time.deltaTime;
@@ -54,7 +61,8 @@ public class DamageTaker : MonoBehaviour
             RegenTimer -= Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag("EnemyAttack"))
             return;
@@ -62,11 +70,12 @@ public class DamageTaker : MonoBehaviour
         if (isInvincible || invenciTimer > 0)
             return;
 
-        GameManager.Instance.PlayerHealth -= 25;
+        EnemySwimAIDevo enemy = collision.GetComponentInParent<EnemySwimAIDevo>();
+        GameManager.Instance.PlayerHealth -= enemy.Damage;
 
         RegenTimer = invenciTime;
 
-        invenciTimer = 5f;
+        invenciTimer = invenciTime;
         isInvincible = true;
 
         AudioController.Instance.PlaySFXRandomPitch(Hurt, -.8f, 1f);

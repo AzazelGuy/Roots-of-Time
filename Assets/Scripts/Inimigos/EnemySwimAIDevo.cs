@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 
-public class EnemySwimAI : MonoBehaviour
+public class EnemySwimAIDevo : MonoBehaviour
 {
+    #region Variaveis
     [Header("Referências")]
     public Transform target;
     public Transform spriteTransform;
     private Collider2D myCollider;
+
+    [Header("Invulnerabilidade")]
+    public float invulnerabilityTime = 0.5f;
+    private float invulnerabilityTimer = 0f;
 
     [Header("Movimento")]
     public float swimSpeed = 5f;
@@ -21,6 +26,24 @@ public class EnemySwimAI : MonoBehaviour
     public LayerMask hidingZoneLayer;
     public float zoneRepulsionDistance = 3f;   // distância que começa a repelir
     public float zoneRepulsionStrength = 2.5f; // força da repulsão
+
+    [Header("Randomização")]
+
+    public SpriteRenderer spriteMask;
+
+    public Sprite[] possibleMasks;
+
+    public Vector2 healthRange = new Vector2(2, 8);
+    public Vector2 damageRange = new Vector2(1, 4);
+    public Vector2 speedRange = new Vector2(2f, 7f);
+    public Vector2 rangeDetectionRange = new Vector2(5f, 15f);
+
+    [HideInInspector] public int Damage;
+
+    [Header("Área de Nado")]
+    public Collider2D swimArea;
+    public float borderCheckDistance = 2f;
+    public float borderRepulsionStrength = 4f;
 
     [Header("Range Aleatório")]
     public float minRange = 5f;
@@ -46,9 +69,55 @@ public class EnemySwimAI : MonoBehaviour
     [HideInInspector] public Vector2 currentDirection;
     [HideInInspector] PlayerMovement playerScript;
     bool isActive = false;
+    #endregion
+    
+    void RandomizeCreature()
+{
+    // Vida
+    Health = Random.Range(
+        (int)healthRange.x,
+        (int)healthRange.y + 1
+    );
 
+    // Dano
+    Damage = Random.Range(
+        (int)damageRange.x,
+        (int)damageRange.y + 1
+    );
+
+    // Velocidade
+    swimSpeed = Random.Range(
+        speedRange.x,
+        speedRange.y
+    );
+
+    // Alcance
+    myRange = Random.Range(
+        rangeDetectionRange.x,
+        rangeDetectionRange.y
+    );
+
+    // Escala
+    float scale = Random.Range(0.8f, 1.4f);
+
+    spriteTransform.localScale =
+        new Vector3(scale, scale, scale);
+
+    // SpriteMask aleatória
+    if (spriteMask != null &&
+        possibleMasks != null &&
+        possibleMasks.Length > 0)
+    {
+        spriteMask.sprite =
+            possibleMasks[
+                Random.Range(0, possibleMasks.Length)
+            ];
+    }
+}
     void Awake()
     {
+        RandomizeCreature();
+
         rb = GetComponent<Rigidbody2D>();
         myCollider = GetComponentInChildren<Collider2D>();
         myRange = Random.Range(minRange, maxRange);
@@ -59,18 +128,25 @@ public class EnemySwimAI : MonoBehaviour
         else
             swimSpeed *= 0.8f;
 
-        if (target != null)
-            playerScript = target.GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
         if (Health <= 0) { Destroy(gameObject); return; }
         if (StunTimer > 0) { StunTimer -= Time.deltaTime; return; }
+        if (invulnerabilityTimer > 0) {
+            invulnerabilityTimer -= Time.deltaTime;
+            spriteTransform.gameObject.SetActive(
+            Mathf.FloorToInt(Time.time * 20) % 2 == 0);
+        }
+        else
+        {
+            spriteTransform.gameObject.SetActive(true);
+        }
         if (target == null) return;
 
         float distToPlayer = Vector2.Distance(transform.position, target.position);
-        isActive = distToPlayer <= myRange && !playerScript.isHidden;
+        isActive = distToPlayer <= myRange;
 
         if (!isActive)
         {
@@ -96,7 +172,12 @@ public class EnemySwimAI : MonoBehaviour
             else desiredDirection = -desiredDirection;
         }
 
-        desiredDirection = (desiredDirection + GetRepulsionFromZones()).normalized;
+        desiredDirection =
+        (
+            desiredDirection +
+            GetRepulsionFromZones() +
+            GetSwimAreaForce()
+        ).normalized;
 
         currentDirection = Vector2.Lerp(currentDirection, desiredDirection, Time.deltaTime * 5f);
         RotateSprite(currentDirection);
@@ -107,10 +188,37 @@ public class EnemySwimAI : MonoBehaviour
         if (!isActive || StunTimer > 0) return;
         if (knockbackTimer > 0f) { knockbackTimer -= Time.fixedDeltaTime; return; }
 
-        rb.velocity = currentDirection * swimSpeed;
+        Vector2 nextPos =
+        rb.position + currentDirection * swimSpeed * Time.fixedDeltaTime;
+
+    if (swimArea != null && !swimArea.OverlapPoint(nextPos))
+    {
+        currentDirection = -currentDirection;
+        rb.velocity = Vector2.zero;
+        return;
+    }
+
+    rb.velocity = currentDirection * swimSpeed;
 
         
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("PlayerAttack")) return;
+        if (invulnerabilityTimer > 0f)
+            return;
+
+        Health -= 5;
+
+        invulnerabilityTimer = invulnerabilityTime;
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     Vector2 GetRepulsionFromZones()
     {
         Vector2 repulsion = Vector2.zero;
@@ -138,6 +246,36 @@ public class EnemySwimAI : MonoBehaviour
         return repulsion * zoneRepulsionStrength;
     }
 
+    Vector2 GetSwimAreaForce()
+{
+    if (swimArea == null)
+        return Vector2.zero;
+
+    Vector2 correction = Vector2.zero;
+
+    int checks = 8;
+
+    for (int i = 0; i < checks; i++)
+    {
+        float angle = i * (360f / checks);
+
+        Vector2 dir = new Vector2(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad)
+        );
+
+        Vector2 checkPoint =
+            (Vector2)transform.position + dir * borderCheckDistance;
+
+        if (!swimArea.OverlapPoint(checkPoint))
+        {
+            correction += -dir;
+        }
+    }
+
+    return correction.normalized * borderRepulsionStrength;
+}
+
     void IdleSwim()
     {
         idleTimer -= Time.deltaTime;
@@ -147,7 +285,12 @@ public class EnemySwimAI : MonoBehaviour
             idleTimer = Random.Range(1f, idleChangeDirectionTime);
             idleDirection = Random.insideUnitCircle.normalized;
         }
-        Vector2 desired = (idleDirection + GetRepulsionFromZones()).normalized;
+        Vector2 desired =
+        (
+            idleDirection +
+            GetRepulsionFromZones() +
+            GetSwimAreaForce()
+        ).normalized;
         currentDirection = Vector2.Lerp(currentDirection, desired, Time.deltaTime * 2f);
         RotateSprite(currentDirection);
         rb.velocity = currentDirection * (swimSpeed * 0.5f);

@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     public void Iniciar()
     {
         SceneManager.LoadScene(2);
+        AudioController.Instance.StopMusic();
     }
 
     public void LoadGame()
@@ -26,7 +27,7 @@ public class MainMenu : MonoBehaviour
         string path = Application.persistentDataPath + "/playerData.json";
         if (File.Exists(path))
             GameManager.Instance.LetsLoad();
-        else Debug.Log("Save não encontrado!");
+        else Debug.Log("Save nï¿½o encontrado!");
     }
     public void Sair()
     {
@@ -71,11 +72,11 @@ public class MainMenu : MonoBehaviour
             AudioController.Instance.PlaySFX(DestroySave, 2f);
         }
 
-        // Reseta o GameManager se já existir (DontDestroyOnLoad)
+        // Reseta o GameManager se jï¿½ existir (DontDestroyOnLoad)
         if (GameManager.Instance != null)
             GameManager.Instance.LoadDefaults();
 
-        Debug.Log("Hard reset concluído.");
-        // Fica no menu — não faz nada a mais
+        Debug.Log("Hard reset concluï¿½do.");
+        // Fica no menu ï¿½ nï¿½o faz nada a mais
     }
 }

@@ -326,8 +326,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Por enquanto \xE9 so!\nRoots of time ainda est\xE1 sendo desenvolvido,
-    espero que tenham gostado, todo feedback ajuda muito!"
+  m_text: "Obrigado por Jogar Roots of Time. Mesmo que tnha sido uma xperiencia curta,
+    espero que tenhamos ensinado um pouco sobre a evolu\xE7\xE3o! Agradecimentos
+    da turma de terceiro jogos at\xE9 a pr\xF3xima."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d35108e288ff6e4aa28c01451294b35, type: 2}
   m_sharedMaterial: {fileID: 557107613345711176, guid: 1d35108e288ff6e4aa28c01451294b35, type: 2}

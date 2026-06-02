@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu_s/Creditos.unity
     guid: afa7f36fa566e1b44b0e975d3abd5bbd
   - enabled: 1
+    path: Assets/Scenes/Cutcene1.unity
+    guid: c068d796e5ce66b4a89f255157239a89
+  - enabled: 1
     path: Assets/Scenes/Mapas Crambriano/MapWater1.unity
     guid: c2fecfc7583d700498db3b13ad9af8e8
   - enabled: 1

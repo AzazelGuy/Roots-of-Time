@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldownTime: 0.8
-  attackDMG: 5
 --- !u!114 &4011021396167969164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +330,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4e3be6df0510446408f31f4b0f8da21e, type: 2}
   fill: {fileID: 7669989931222148842}
   maxWidth: 3.5
+  groupBar: {fileID: 6801794323949441037}
 --- !u!95 &6821618153523417586
 Animator:
   serializedVersion: 5
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfecbf252250d7f42b2835d2adbc0d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invenciTime: 1.5
-  RegenTime: 5
+  invenciTime: 2.5
+  RegenTime: 0.5
   Hurt: {fileID: 8300000, guid: 8877ba01d8351544e90c63ab8583bbcb, type: 3}
   invenciTimer: 0
 --- !u!1 &3633146870200662777

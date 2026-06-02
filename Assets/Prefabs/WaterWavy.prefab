@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1930000748854819031}
   - component: {fileID: 1930000748854819024}
   - component: {fileID: 1930000748854819025}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterWavy
   m_TagString: Water
   m_Icon: {fileID: 0}
