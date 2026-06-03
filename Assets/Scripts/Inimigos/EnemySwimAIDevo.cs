@@ -211,6 +211,7 @@ public class EnemySwimAIDevo : MonoBehaviour
 
         Health -= 5;
 
+        other.GetComponentInParent<DamageTaker>().invenciTimer = 1f;
         invulnerabilityTimer = invulnerabilityTime;
 
         if (Health <= 0)

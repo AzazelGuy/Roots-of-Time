@@ -9,6 +9,7 @@ public class WaterModeDefense : MonoBehaviour
     [SerializeField] float ParryTime = 0.15f;
     [SerializeField] float ParryStrenght = 25f;
     [SerializeField] float defenseCooldown = 0.2f;
+    public Transform spriteTransform;
     SpriteRenderer spr;
     float invenciTime = 1.5f;
     [HideInInspector] public float invenciTimer = 0f;
@@ -52,7 +53,12 @@ public class WaterModeDefense : MonoBehaviour
         {
             invenciTimer = 0;
             isInvincible = false; // Libera quando o timer acabar
+            spriteTransform.gameObject.SetActive(true);
             return;
+        }else
+        {
+            spriteTransform.gameObject.SetActive(
+            Mathf.FloorToInt(Time.time * 20) % 2 == 0);
         }
 
         invenciTimer -= Time.deltaTime;

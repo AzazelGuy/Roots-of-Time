@@ -8,6 +8,7 @@ public class BossHurtBox : MonoBehaviour
     {
         if (collision.CompareTag("PlayerAttack"))
         {
+            collision.GetComponentInParent<DamageTaker>().invenciTimer = 1f;
             boss.TakeDamage(5);
         }
     }

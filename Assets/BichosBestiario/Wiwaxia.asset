@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615b2c5a1689d0d47a7f59ed130579ce, type: 3}
+  m_Name: Wiwaxia
+  m_EditorClassIdentifier: 
+  creatureName: Wiwaxia
+  portrait: {fileID: 21300000, guid: 08a25471e8b414e44a8b51fd59fec0f9, type: 3}
+  description: "Animal de corpo achatado protegido por placas e espinhos, alimentando-se
+    de mat\xE9ria org\xE2nica presente no fundo do oceano."
+  habitat: "Oceanos do Cambriano em v\xE1rias regi\xF5es"
+  health: 0
+  damage: 0

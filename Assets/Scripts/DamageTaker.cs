@@ -71,7 +71,10 @@ public class DamageTaker : MonoBehaviour
             return;
 
         EnemySwimAIDevo enemy = collision.GetComponentInParent<EnemySwimAIDevo>();
-        GameManager.Instance.PlayerHealth -= enemy.Damage;
+        if (enemy != null) GameManager.Instance.PlayerHealth -= enemy.Damage;
+
+        DunkeosteusBoss boss = collision.GetComponentInParent<DunkeosteusBoss>();
+        if (boss != null) GameManager.Instance.PlayerHealth -= 25;
 
         RegenTimer = invenciTime;
 

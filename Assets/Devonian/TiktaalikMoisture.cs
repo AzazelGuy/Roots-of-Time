@@ -55,7 +55,7 @@ public class TiktaalikMoisture : MonoBehaviour
         if (inWater)
         {
             moisture = Mathf.Min(
-                moisture + data.moistureDrainRate * Time.deltaTime,
+                moisture + (data.moistureDrainRate * 3) * Time.deltaTime,
                 data.moistureMax);
 
             groupBar.SetActive(false);

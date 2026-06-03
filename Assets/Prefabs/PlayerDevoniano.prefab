@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invenciTime: 2.5
+  spriteTransform: {fileID: 0}
   RegenTime: 0.5
   Hurt: {fileID: 8300000, guid: 8877ba01d8351544e90c63ab8583bbcb, type: 3}
   invenciTimer: 0
@@ -530,7 +531,7 @@ MonoBehaviour:
   - {x: -1.8288493, y: 0.1687088, z: 0}
   m_ShapePathHash: 156983625
   m_Mesh: {fileID: 0}
-  m_InstanceId: -182624
+  m_InstanceId: 29916
 --- !u!1 &6801794323949441037
 GameObject:
   m_ObjectHideFlags: 0

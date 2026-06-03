@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TiktaalikCombat : MonoBehaviour
 {
-
     private Animator anim;
     private float attackCooldownTimer;
     [SerializeField ]private float attackCooldownTime;

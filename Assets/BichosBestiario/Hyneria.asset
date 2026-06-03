@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615b2c5a1689d0d47a7f59ed130579ce, type: 3}
+  m_Name: Hyneria
+  m_EditorClassIdentifier: 
+  creatureName: Hyneria
+  portrait: {fileID: 21300000, guid: cd9e7862fdaf8594c97e7fe10c508b9a, type: 3}
+  description: "Peixe predador de grande porte pertencente aos sarcopter\xEDgios,
+    grupo que daria origem aos vertebrados terrestres."
+  habitat: "Sistemas fluviais e estu\xE1rios do Devoniano Superior"
+  health: 0
+  damage: 0

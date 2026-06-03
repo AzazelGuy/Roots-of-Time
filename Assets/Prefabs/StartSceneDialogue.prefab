@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2259619422275534131}
-  - component: {fileID: 2259619422275534130}
+  - component: {fileID: 2300411002643591179}
+  - component: {fileID: 6854168566998366107}
   m_Layer: 0
   m_Name: StartSceneDialogue
   m_TagString: Untagged
@@ -24,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259619422275534129}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -42.2, y: 45.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2259619422275534130
+--- !u!114 &2300411002643591179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,20 +41,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259619422275534129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf4a5dd0c4bcf584b9a62e61b4b369d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff3854ecf9baec4aaea41cba0f550df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 0}
   dialoguePages:
-  - text: '! ! ! ! !'
-    portrait: {fileID: 21300000, guid: 982ea7e3e90eaa64382e14d7f61db1b6, type: 3}
+  - text: '"No fundo do oceano, mora uma criatura, essa criatura pode ser indefesa,
+      mas sabe-se defender."'
+    portrait: {fileID: 0}
     options: []
     isStop: 0
     ChangeSong: 0
     music: {fileID: 0}
-  - text: "O Ch\xE3o treme abaixo, algo lhe persegue."
-    portrait: {fileID: 21300000, guid: 982ea7e3e90eaa64382e14d7f61db1b6, type: 3}
+  - text: "\"T\xE3o bem que as vezes pode REFLETIR seus ataques contra seus predadores.\""
+    portrait: {fileID: 0}
     options: []
     isStop: 1
-    ChangeSong: 1
-    music: {fileID: 8300000, guid: 75f2cf2827bb51a46a51c5ef1918185b, type: 3}
+    ChangeSong: 0
+    music: {fileID: 0}
+  ActivateBoss: {fileID: 0}
+--- !u!61 &6854168566998366107
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259619422275534129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.0917015, y: 1}
+  m_EdgeRadius: 0

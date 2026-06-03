@@ -36,7 +36,7 @@ public class DunkeosteusBoss : MonoBehaviour
 
     private float invulnerabilityTimer = 0f;
     public bool Active = false;
-    private int health = 50;
+    public int health = 50;
     float dashTimer;
     float dashCooldownTimer;
     bool isDashing;
@@ -177,6 +177,8 @@ public class DunkeosteusBoss : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         // Sua lógica de morte aqui
+        transitionAction.Go();
+        
         Destroy(gameObject);
     }
 }

@@ -249,9 +249,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dbb3ea9172af22746ab7cb181f06a01e, type: 3}
   - {fileID: 21300000, guid: 297a06965be7c4b40ae21c440fadb4bd, type: 3}
   - {fileID: 21300000, guid: 98b6b7fc00518234b948ff599dbae6af, type: 3}
-  healthRange: {x: 2, y: 20}
-  damageRange: {x: 5, y: 20}
-  speedRange: {x: 2, y: 7}
+  healthRange: {x: 20, y: 35}
+  damageRange: {x: 15, y: 30}
+  speedRange: {x: 3, y: 7}
   rangeDetectionRange: {x: 25, y: 50}
   Damage: 0
   swimArea: {fileID: 0}

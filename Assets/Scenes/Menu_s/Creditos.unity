@@ -812,8 +812,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 148.00006, y: 316.78268}
-  m_SizeDelta: {x: 730.223, y: 109.771}
+  m_AnchoredPosition: {x: 148.00006, y: 211.14}
+  m_SizeDelta: {x: 730.223, y: 321.057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643577865
 MonoBehaviour:
@@ -835,7 +835,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\xFAsicas - Nyxenix\r\nProfessor \u2013 Vinicius\r\n\n"
+  m_text: "M\xFAsicas - \"Nyxenix\r\"\nProfessor / Gestor Geral \u2013 Vinicius\r\nDubladores
+    -  Rhuan e Ana Clara (ou nana)\nArtista Secund\xE1ria - Yasphynx\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee8f422b6d6fb014abeaafa0f794407f, type: 2}
   m_sharedMaterial: {fileID: 557107613345711176, guid: ee8f422b6d6fb014abeaafa0f794407f, type: 2}
@@ -862,7 +863,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 36.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -876,7 +877,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: -28.1
+  m_paragraphSpacing: 22.28
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -1294,7 +1295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bd468548eed8c41b894d51f4623a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Music: {fileID: 0}
+  resetKey: 13
+  holdDuration: 5
+  DestroySave: {fileID: 0}
 --- !u!114 &1557139107
 MonoBehaviour:
   m_ObjectHideFlags: 0

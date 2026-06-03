@@ -120,6 +120,11 @@ MonoBehaviour:
   - MainMenu
   - GameOver
   - Credits
+  - Cutcene1
+  - Cutcene2
+  - Cutcene3
+  - Cutcene4
+  - LevelSelect
   active: 1
 --- !u!1 &3403266842232591343
 GameObject:

@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000623211}
+  m_AnchoredPosition: {x: 0, y: 0.0000000715575}
   m_SizeDelta: {x: 0, y: 1062.7}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6392661250285953708
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6392661252005280901}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -557,6 +557,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9143fbf1243f3d48aa54c598bb7814b, type: 2}
   - {fileID: 11400000, guid: 941a57be3f8510647aab4e0d39ab274f, type: 2}
   - {fileID: 11400000, guid: eddf5c625eb02c544ad85ae08a22a9bb, type: 2}
+  - {fileID: 11400000, guid: d7d7655707ebe174384952e7ec7aabe0, type: 2}
+  - {fileID: 11400000, guid: 8c9337ba207d9bf4cafba754fa60ecac, type: 2}
+  - {fileID: 11400000, guid: 630c0cd7337525149832fd9c9f17483d, type: 2}
+  - {fileID: 11400000, guid: a6f556157591b0c4aa223d523e6bcdab, type: 2}
+  - {fileID: 11400000, guid: a2ac1ebcfd19f3b40a42a39c858e9cf1, type: 2}
+  - {fileID: 11400000, guid: ce71901d46a34c149819ed967f8eda97, type: 2}
+  - {fileID: 11400000, guid: 3dcb28cc8515343458489a9484503825, type: 2}
   gridParent: {fileID: 6392661250285953709}
   cardPrefab: {fileID: 7231898515759309143, guid: dc69061b521121f4f8289e301cfbbf08, type: 3}
   detailPanel: {fileID: 6392661250795707366}
@@ -698,7 +705,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6392661251335954922}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

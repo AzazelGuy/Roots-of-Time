@@ -42,7 +42,7 @@ public class BestiaryUI : MonoBehaviour
         detailPortrait.sprite  = c.portrait;
         detailName.text        = c.creatureName;
         detailDescription.text = c.description;
-        detailStats.text       = $"Vida {c.health}    Dano {c.damage}    Local {c.habitat}";
+        detailStats.text       = $"Local {c.habitat}";
     }
 
     public void CloseDetail() => detailPanel.SetActive(false);
